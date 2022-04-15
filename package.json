@@ -1,0 +1,29 @@
+{
+  "name": "smartty",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "tailwind": "tailwindcss -i ./styles/index.css -o ./dist/output.css --watch",
+    "rebuild": "electron-rebuild"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.4",
+    "electron": "^18.0.3",
+    "electron-rebuild": "^3.2.7",
+    "electron-reloader": "^1.2.3",
+    "postcss": "^8.4.12",
+    "postcss-loader": "^6.2.1",
+    "tailwindcss": "^3.0.24"
+  },
+  "dependencies": {
+    "@symblai/symbl-js": "^1.4.6",
+    "axios": "^0.26.1",
+    "electron-acrylic-window": "^0.5.11",
+    "mic": "^2.1.2",
+    "node-pty": "^0.10.1",
+    "xterm": "^4.18.0",
+    "xterm-addon-fit": "^0.5.0"
+  }
+}
