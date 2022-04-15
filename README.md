@@ -18,6 +18,8 @@
 
 
 ## Video on how to run:
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](assets/howto.mkv)
+
 
 ## What problem are we solving?  
 
