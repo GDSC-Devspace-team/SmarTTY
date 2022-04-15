@@ -18,7 +18,8 @@
 
 
 ## Video on how to run:
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](assets/howto.mkv)
+
+https://user-images.githubusercontent.com/88224695/163598930-d56a1dd6-f606-4b48-8b01-b99fd226a148.mp4
 
 
 ## What problem are we solving?  
