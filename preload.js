@@ -72,25 +72,13 @@ ws.onmessage = (event) => {
   }
   if (data.type === 'tracker_response') {
     for (let tracker of data.trackers) {
-      if(tracker.name==="react"){
-        term.writeln(`npx create-react-app my-app`)
+      if(tracker.name==="list_dir"){
+        ipc.send("terminal.keystroke", "ls");
+        break;
       }
       else if(tracker.name==="new_folder"){
-        term.write("mkdir new_folder")
-        term.onData((e) => {
-          ipc.send("terminal.keystroke", "mkdir new_folder");
-        });
-       // exec("ls",(err, stdout, stderr) => {
-       //   if (err) {
-       //     console.log(err)
-       //     return;
-       //   }
-       // 
-       //   // the *entire* stdout and stderr (buffered)
-       //   console.log(`stdout: ${stdout}`);
-       //   console.log(`stderr: ${stderr}`);
-       // });
-        
+        ipc.send("terminal.keystroke", "mkdir new_folder");
+       break; 
       }
     //  for (let match of tracker.matches) {
     //    console.log('Tracker found:', match.value);
@@ -125,18 +113,18 @@ ws.onopen = (event) => {
     insightTypes: ['question', 'action_item'], // Will enable insight generation
     trackers: [
       {
-        name: "react",
-        vocabulary: [
-          "create a new react app",
-          "make a new react app"
-        ]
-      },
-      {
         name: "new_folder",
         vocabulary: [
           "make a new folder",
           "make a new directory",
           "create a new folder",
+        ]
+      },
+      {
+        name: "list_dir",
+        vocabulary: [
+          "show all directories",
+          "list folders",
         ]
       }
 
