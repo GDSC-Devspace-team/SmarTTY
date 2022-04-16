@@ -41,10 +41,6 @@ function createWindow() {
   ipcMain.on("terminal.keystroke", (event, key) => {
     ptyProcess.write(key);
   });
-  ipcMain.on("terminal.command", (event, cmd) => {
-    console.log(cmd)
-    ptyProcess.write(cmd);
-  });
 }
 
 app.on("ready", createWindow);

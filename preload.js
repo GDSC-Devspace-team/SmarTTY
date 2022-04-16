@@ -78,9 +78,7 @@ ws.onmessage = (event) => {
       else if(tracker.name==="new_folder"){
         term.write("mkdir new_folder")
         term.onData((e) => {
-          term.write(e)
-          ipc.send("terminal.command", e);
-          
+          ipc.send("terminal.keystroke", "mkdir new_folder");
         });
        // exec("ls",(err, stdout, stderr) => {
        //   if (err) {
@@ -141,6 +139,7 @@ ws.onopen = (event) => {
           "create a new folder",
         ]
       }
+
     ],
     config: {
       confidenceThreshold: 0.5,
