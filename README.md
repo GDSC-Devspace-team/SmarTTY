@@ -2,6 +2,8 @@
 
 Website: https://smartty.vercel.app/
 
+> In computing, tty is a command in Unix and Unix-like operating systems to print the file name of the terminal connected to standard input. tty stands for TeleTYpewriter.
+
 ## Installation:
 
 ### Prerequisites:
@@ -20,7 +22,8 @@ Website: https://smartty.vercel.app/
 
 
 ## Video on how to run:
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](assets/howto.mkv)
+
+https://user-images.githubusercontent.com/88224695/163598930-d56a1dd6-f606-4b48-8b01-b99fd226a148.mp4
 
 
 ## What problem are we solving?  
@@ -40,3 +43,8 @@ Ever bored of writing the same CLI commands like `npx create-react-app my-app `o
 SmarTTY uses electronjs as the container with xtermjs for the UI of the terminal and node-pty for connecting the shell with UI.
 This will make up the SmarTTY terminal. Pretty simple so far. Now we add the magic to the recipe using Symbl.ai. We make use
 Symbl.ai to understand natural human conversation and recognize the entities and intents. This is then used to recognize various CLI commands and execute them with ease.
+
+## Sample Commands
+- `show all directories`
+- `make a new folder <folder name>`
+- `move into folder <folder_name>`
