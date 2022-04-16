@@ -77,19 +77,25 @@ ws.onmessage = (event) => {
         break;
       }
       else if(tracker.name==="new_folder"){
-        ipc.send("terminal.keystroke", "mkdir new_folder");
+        for(let match of tracker.matches){
+          let str=match.messageRefs[0].text//.messageRefs;
+          let folder_name=str.split(" ").pop();
+          ipc.send("terminal.keystroke", `mkdir ${folder_name}`);
+          break;
+        }
+        
        break; 
       }
-    //  for (let match of tracker.matches) {
-    //    console.log('Tracker found:', match.value);
-    //    if(match.value==="react"){
-    //      term.write(`npx create-react-app my-app`)
-    //    }
-    //    else if(match.value==="new_folder"){
-    //      term.write(`mkdir new_folder`)
-    //    }
-    //    
-    //  }
+      else if(tracker.name==="move_dir"){
+        for(let match of tracker.matches){
+          let str=match.messageRefs[0].text//.messageRefs;
+          let folder_name=str.split(" ").pop();
+          ipc.send("terminal.keystroke", `cd ${folder_name}`);
+          break;
+        }
+        
+       break; 
+      }
     }
   }
   console.log(`Response type: ${data.type}. Object: `, data);
@@ -126,6 +132,11 @@ ws.onopen = (event) => {
           "show all directories",
           "list folders",
         ]
+      },{
+        name: "move_dir",
+        vocabulary: [
+          "move into folder",
+        ]        
       }
 
     ],
