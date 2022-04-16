@@ -4,8 +4,6 @@ const axios = require("axios");
 
 const { Terminal } = require("xterm");
 const { FitAddon } = require("xterm-addon-fit");
-const { exec } = require('child_process');
-
 
 window.addEventListener("DOMContentLoaded", async () => {
   const appId =
@@ -45,6 +43,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   });
 
   term.onData((e) => {
+
     ipc.send("terminal.keystroke", e);
   });
 
@@ -74,20 +73,26 @@ ws.onmessage = (event) => {
   if (data.type === 'tracker_response') {
     for (let tracker of data.trackers) {
       if(tracker.name==="react"){
-        term.write(`npx create-react-app my-app`)
+        term.writeln(`npx create-react-app my-app`)
       }
       else if(tracker.name==="new_folder"){
-        exec("ls",(err, stdout, stderr) => {
-          if (err) {
-            console.log(err)
-            return;
-          }
-        
-          // the *entire* stdout and stderr (buffered)
-          console.log(`stdout: ${stdout}`);
-          console.log(`stderr: ${stderr}`);
-        });
         term.write("mkdir new_folder")
+        term.onData((e) => {
+          term.write(e)
+          ipc.send("terminal.command", e);
+          
+        });
+       // exec("ls",(err, stdout, stderr) => {
+       //   if (err) {
+       //     console.log(err)
+       //     return;
+       //   }
+       // 
+       //   // the *entire* stdout and stderr (buffered)
+       //   console.log(`stdout: ${stdout}`);
+       //   console.log(`stderr: ${stderr}`);
+       // });
+        
       }
     //  for (let match of tracker.matches) {
     //    console.log('Tracker found:', match.value);

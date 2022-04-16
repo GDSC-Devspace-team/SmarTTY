@@ -1,5 +1,7 @@
 # SmarTTY
 
+Website: https://smartty.vercel.app/
+
 ## Installation:
 
 ### Prerequisites:
