@@ -40,3 +40,8 @@ Ever bored of writing the same CLI commands like `npx create-react-app my-app `o
 SmarTTY uses electronjs as the container with xtermjs for the UI of the terminal and node-pty for connecting the shell with UI.
 This will make up the SmarTTY terminal. Pretty simple so far. Now we add the magic to the recipe using Symbl.ai. We make use
 Symbl.ai to understand natural human conversation and recognize the entities and intents. This is then used to recognize various CLI commands and execute them with ease.
+
+## Sample Commands
+- `show all directories`
+- `make a new folder <folder name>`
+- `move into folder <folder_name>`
