@@ -4,6 +4,8 @@ const axios = require("axios");
 
 const { Terminal } = require("xterm");
 const { FitAddon } = require("xterm-addon-fit");
+const { exec } = require('child_process');
+
 
 window.addEventListener("DOMContentLoaded", async () => {
   const appId =
@@ -71,9 +73,32 @@ ws.onmessage = (event) => {
   }
   if (data.type === 'tracker_response') {
     for (let tracker of data.trackers) {
-      for (let match of tracker.matches) {
-        console.log('Tracker found:', match.value);
+      if(tracker.name==="react"){
+        term.write(`npx create-react-app my-app`)
       }
+      else if(tracker.name==="new_folder"){
+        exec("ls",(err, stdout, stderr) => {
+          if (err) {
+            console.log(err)
+            return;
+          }
+        
+          // the *entire* stdout and stderr (buffered)
+          console.log(`stdout: ${stdout}`);
+          console.log(`stderr: ${stderr}`);
+        });
+        term.write("mkdir new_folder")
+      }
+    //  for (let match of tracker.matches) {
+    //    console.log('Tracker found:', match.value);
+    //    if(match.value==="react"){
+    //      term.write(`npx create-react-app my-app`)
+    //    }
+    //    else if(match.value==="new_folder"){
+    //      term.write(`mkdir new_folder`)
+    //    }
+    //    
+    //  }
     }
   }
   console.log(`Response type: ${data.type}. Object: `, data);
@@ -97,10 +122,18 @@ ws.onopen = (event) => {
     insightTypes: ['question', 'action_item'], // Will enable insight generation
     trackers: [
       {
-        name: "create",
+        name: "react",
         vocabulary: [
-          "create",
-          "make a new"
+          "create a new react app",
+          "make a new react app"
+        ]
+      },
+      {
+        name: "new_folder",
+        vocabulary: [
+          "make a new folder",
+          "make a new directory",
+          "create a new folder",
         ]
       }
     ],
